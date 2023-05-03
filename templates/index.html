@@ -1,1 +1,216 @@
+<!DOCTYPE html>
 
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+  <!-- Make it compatible to mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+<title>HEALTHCARE - PERSISTENCY OF THE DRUG</title>
+
+</head>
+
+<body style="background: #B5A642;">
+ <div class="login">
+	<h1 style="color:Black;">HEALTHCARE - PERSISTENCY OF THE DRUG</h1>
+	
+     <!-- Action is where the data is sent. In our case, predict page.
+     If action is omitted, it assumed to be the current page -->
+    <form action="{{ url_for('predict')}}"method="post">
+    
+    	<label for="Region">Region:</label>
+        <input type="text" name="Region" placeholder="Enter your Locaion" required="required" /><p>
+        <h8 style="color:white;">Region:</h8><br>
+        <h8 style="color:white;">0:Midwest, 1:Northeast, 2:Other/unknown, 3:South,
+        4:West</h8><br></br>
+        
+        <label for="Ntm_Specialist_Flag">Ntm_Specialist_Flag:</label>
+        <input type="text" name="Ntm_Specialist_Flag" placeholder="Select option " required="required" /><p>
+        <h8 style="color:white;">Ntm_Specialist_Flag:</h8><br>
+        <h8 style="color:white;">0:CARDIOLOGY, 1:CLINICAL NURSE SPECIALIST, 2:EMERGENCY MEDICINE,
+         3:ENDOCRINOLOGY,4:GASTROENTEROLOGY, 5:GENERAL PRACTITIONER,</h8><br> 
+        <h8 style="color:white;"> 6:GERIATRIC MEDICINE, 7:HEMATOLOGY & ONCOLOGY, 8:HOSPICE AND PALLIATIVE MEDICINE, 
+        9:HOSPITAL MEDICINE, 10:NEPHROLOGY, </h8><br>
+        <h8 style="color:white;">11:NEUROLOGY , 12:NUCLEAR MEDICINE, 13:OBSTETRICS & OBSTETRICS & GYNECOLOGY & OBSTETRICS & GYNECOLOGY,</h8><br>
+        <h8 style="color:white;">14:OBSTETRICS AND GYNECOLOGY,15:OCCUPATIONAL MEDICINE, 16:ONCOLOGY,</h8><br>
+        <h8 style="color:white;"> 17:OPHTHALMOLOGY, 18:ORTHOPEDIC SURGERY, 19:ORTHOPEDICS,
+        20:OTOLARYNGOLOGY, </h8><br>
+        <h8 style="color:white;">21:PAIN MEDICINE, 22:PATHOLOGY, 23:PEDIATRICS,
+        24:PHYSICAL MEDICINE AND REHABILITATION, 25:PLASTIC SURGERY,</h8><br>
+        <h8 style="color:white;"> 26:PODIATRY, 27:PSYCHIATRY AND NEUROLOGY, 
+        28:PULMONARY MEDICINE, 29:RADIOLOGY,30:RHEUMATOLOGY, </h8><br>   
+        <h8 style="color:white;">31:SURGERY AND SURGICAL SPECIALTIES, 32:TRANSPLANT SURGERY, 
+        33:UROLOGY,34:UNKNOWN, 35:VASCULAR SURGERY</h8><br></br>
+        
+        
+        <label for="Ntm_Speciality_Bucket">Ntm_Speciality_Bucket:</label>
+        <input type="text" name="Ntm_Speciality_Bucket" placeholder="Select option" required="required" /><p>
+        <h8 style="color:white;">Ntm_Speciality_Bucket:</h8><br>
+        <h8 style="color:white;">0:Endo/Onc/Uro, 1:OB/GYN/Others/PCP/Unknown, 2:Rheum</h8><br></br>
+        
+        <label for="Gluco_Record_During_Rx">Gluco_Record_During_Rx:</label>
+        <input type="text" name="Gluco_Record_During_Rx" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Dexa_Freq_During_Rx">Dexa_Freq_During_Rx:</label>
+        <input type="text" name="Dexa_Freq_During_Rx" placeholder="Enter the frequency" required="required" /><p><br>
+        
+        <label for="Dexa_During_Rx">Dexa_During_Rx:</label>
+        <input type="text" name="Dexa_During_Rx" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Frag_Frac_During_Rx">Frag_Frac_During_Rx:</label>
+        <input type="text" name="Frag_Frac_During_Rx" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Tscore_Bucket_Prior_Ntm">Tscore_Bucket_Prior_Ntm:</label>
+        <input type="text" name="Tscore_Bucket_Prior_Ntm" placeholder="0:<=-2.5 / 1:>-2.5" required="required" /><p><br>
+        
+        <label for="Tscore_Bucket_During_Rx">Tscore_Bucket_During_Rx:</label>
+        <input type="text" name="Tscore_Bucket_During_Rx" placeholder="Select option" required="required" /><p>
+        <h8 style="color:white;">Tscore_Bucket_During_Rx:</h8><br>
+        <h8 style="color:white;">0: <=-2.5, 1: >-2.5, 2:Unknown</h8><br></br>
+        
+        <label for="Change_T_Score">Change_T_Score:</label>
+        <input type="text" name="Change_T_Score" placeholder="Select Option" required="required" /><p>
+        <h8 style="color:white;">Change_T_Score:</h8><br>
+        <h8 style="color:white;">0:Improved, 1:No Change, 2:Unknown, 3:Worsened </h8><br></br>
+        
+        <label for="Adherent_Flag">Adherent_Flag:</label>
+        <input type="text" name="Adherent_Flag" placeholder="Select Option" required="required" /><p>
+        <h8 style="color:white;">Adherent_Flag:</h8><br>
+        <h8 style="color:white;">0:Adherent, 1:Non-Adherent</h8><br></br>
+        
+        <label for="Idn_Indicator">Idn_Indicator:</label>
+        <input type="text" name="Idn_Indicator" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Injectable_Experience_During_Rx">Injectable_Experience_During_Rx:</label>
+        <input type="text" name="Injectable_Experience_During_Rx" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Comorb_Encounter_For_Screening_For_Malignant_Neoplasms">Comorb_Encounter_For_Screening_For_Malignant_Neoplasms:</label>
+        <input type="text" name="Comorb_Encounter_For_Screening_For_Malignant_Neoplasms" placeholder="0=No / 1=Yes" required="required" /><p><br>
+         
+        <label for="Comorb_Encounter_For_Immunization">Comorb_Encounter_For_Immunization:</label>
+        <input type="text" name="Comorb_Encounter_For_Immunization" placeholder="0=No / 1=Yes" required="required" /><p><br>
+
+        <label for="Comorb_Encntr_For_General_Exam_W_O_Complaint,_Susp_Or_Reprtd_Dx">Comorb_Encntr_For_General_Exam_W_O_Complaint,_Susp_Or_Reprtd_Dx:</label>
+        <input type="text" name="Comorb_Encntr_For_General_Exam_W_O_Complaint,_Susp_Or_Reprtd_Dx" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Comorb_Vitamin_D_Deficiency">Comorb_Vitamin_D_Deficiency:</label>
+        <input type="text" name="Comorb_Vitamin_D_Deficiency" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Comorb_Other_Joint_Disorder_Not_Elsewhere_Classified">Comorb_Other_Joint_Disorder_Not_Elsewhere_Classified:</label>
+        <input type="text" name="Comorb_Other_Joint_Disorder_Not_Elsewhere_Classified" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Comorb_Encntr_For_Oth_Sp_Exam_W_O_Complaint_Suspected_Or_Reprtd_Dx">Comorb_Encntr_For_Oth_Sp_Exam_W_O_Complaint_Suspected_Or_Reprtd_Dx:</label>
+        <input type="text" name="Comorb_Encntr_For_Oth_Sp_Exam_W_O_Complaint_Suspected_Or_Reprtd_Dx" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Comorb_Long_Term_Current_Drug_Therapy">Comorb_Long_Term_Current_Drug_Therapy:</label>
+        <input type="text" name="Comorb_Long_Term_Current_Drug_Therapy" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Comorb_Dorsalgia">Comorb_Dorsalgia:</label>
+        <input type="text" name="Comorb_Dorsalgia" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Comorb_Personal_History_Of_Other_Diseases_And_Conditions">Comorb_Personal_History_Of_Other_Diseases_And_Conditions:</label>
+        <input type="text" name="Comorb_Personal_History_Of_Other_Diseases_And_Conditions" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Comorb_Other_Disorders_Of_Bone_Density_And_Structure">Comorb_Other_Disorders_Of_Bone_Density_And_Structure:</label>
+        <input type="text" name="Comorb_Other_Disorders_Of_Bone_Density_And_Structure" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Comorb_Disorders_of_lipoprotein_metabolism_and_other_lipidemias">Comorb_Disorders_of_lipoprotein_metabolism_and_other_lipidemias:</label>
+        <input type="text" name="Comorb_Disorders_of_lipoprotein_metabolism_and_other_lipidemias" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Comorb_Osteoporosis_without_current_pathological_fracture">Comorb_Osteoporosis_without_current_pathological_fracture:</label>
+        <input type="text" name="Comorb_Osteoporosis_without_current_pathological_fracture" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Comorb_Personal_history_of_malignant_neoplasm">Comorb_Personal_history_of_malignant_neoplasm:</label>
+        <input type="text" name="Comorb_Personal_history_of_malignant_neoplasm" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Comorb_Gastro_esophageal_reflux_disease">Comorb_Gastro_esophageal_reflux_disease:</label>
+        <input type="text" name="Comorb_Gastro_esophageal_reflux_disease" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Concom_Cholesterol_And_Triglyceride_Regulating_Preparations">Concom_Cholesterol_And_Triglyceride_Regulating_Preparations:</label>
+        <input type="text" name="Concom_Cholesterol_And_Triglyceride_Regulating_Preparations" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Concom_Narcotics">Concom_Narcotics:</label>
+        <input type="text" name="Concom_Narcotics" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Concom_Systemic_Corticosteroids_Plain">Concom_Systemic_Corticosteroids_Plain:</label>
+        <input type="text" name="Concom_Systemic_Corticosteroids_Plain" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Concom_Anti_Depressants_And_Mood_Stabilisers">Concom_Anti_Depressants_And_Mood_Stabilisers:</label>
+        <input type="text" name="Concom_Anti_Depressants_And_Mood_Stabilisers" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Concom_Fluoroquinolones">Concom_Fluoroquinolones:</label>
+        <input type="text" name="Concom_Fluoroquinolones" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Concom_Cephalosporins">Concom_Cephalosporins:</label>
+        <input type="text" name="Concom_Cephalosporins" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Concom_Macrolides_And_Similar_Types">Concom_Macrolides_And_Similar_Types:</label>
+        <input type="text" name="Concom_Macrolides_And_Similar_Types" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Concom_Broad_Spectrum_Penicillins">Concom_Broad_Spectrum_Penicillins:</label>
+        <input type="text" name="Concom_Broad_Spectrum_Penicillins" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Concom_Anaesthetics_General">Concom_Anaesthetics_General:</label>
+        <input type="text" name="PConcom_Anaesthetics_General" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Concom_Viral_Vaccines">Concom_Viral_Vaccines:</label>
+        <input type="text" name="Concom_Viral_Vaccines" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Risk_Type_1_Insulin_Dependent_Diabetes">Risk_Type_1_Insulin_Dependent_Diabetes:</label>
+        <input type="text" name="Risk_Type_1_Insulin_Dependent_Diabetes" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Risk_Rheumatoid_Arthritis">Risk_Rheumatoid_Arthritis:</label>
+        <input type="text" name="Risk_Rheumatoid_Arthritis" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Risk_Untreated_Chronic_Hyperthyroidism">Risk_Untreated_Chronic_Hyperthyroidism:</label>
+        <input type="text" name="Risk_Untreated_Chronic_Hyperthyroidism" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Risk_Untreated_Chronic_Hypogonadism">Risk_Untreated_Chronic_Hypogonadism:</label>
+        <input type="text" name="Risk_Untreated_Chronic_Hypogonadism" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Risk_Smoking_Tobacco">Risk_Smoking_Tobacco:</label>
+        <input type="text" name="Risk_Smoking_Tobacco" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Risk_Chronic_Malnutrition_Or_Malabsorption">Risk_Chronic_Malnutrition_Or_Malabsorption:</label>
+        <input type="text" name="Risk_Chronic_Malnutrition_Or_Malabsorption" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Risk_Chronic_Liver_Disease">Risk_Chronic_Liver_Disease:</label>
+        <input type="text" name="Risk_Chronic_Liver_Disease" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Risk_Vitamin_D_Insufficiency">Risk_Vitamin_D_Insufficiency:</label>
+        <input type="text" name="Risk_Vitamin_D_Insufficiency" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Risk_Poor_Health_Frailty">Risk_Poor_Health_Frailty:</label>
+        <input type="text" name="Risk_Poor_Health_Frailty" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Risk_Excessive_Thinness">Risk_Excessive_Thinness:</label>
+        <input type="text" name="Risk_Excessive_Thinness" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Risk_Hysterectomy_Oophorectomy">Risk_Hysterectomy_Oophorectomy:</label>
+        <input type="text" name="Risk_Hysterectomy_Oophorectomy" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Risk_Estrogen_Deficiency">Risk_Estrogen_Deficiency:</label>
+        <input type="text" name="Risk_Estrogen_Deficiency" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Risk_Immobilization">Risk_Immobilization:</label>
+        <input type="text" name="Risk_Immobilization" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Risk_Recurring_Falls">Risk_Recurring_Falls:</label>
+        <input type="text" name="Risk_Recurring_Falls" placeholder="0=No / 1=Yes" required="required" /><p><br>
+        
+        <label for="Count_Of_Risks">Count_Of_Risks:</label>
+        <input type="text" name="Count_Of_Risks" placeholder="Enter the Counts" required="required" /><p>
+     
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button></p>
+    </form>
+
+ </div>
+    <div class="login">
+
+	<h1 style="color:Red;">The Drug is: {{prediction_text}}</h1>
+	</div>
+	<h8 style="color:white;">1 = Persistent </h8><br>
+	<h8 style="color:white;">0 = Non-Persistent </h8><br>
+</body>
+</html>
